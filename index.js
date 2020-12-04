@@ -11,8 +11,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
       return 0.5 - Math.random();
     });
     let theWord = myWords.shift();
-    console.log(theWord);
+    player.solution = theWord.split('');
+    console.log(player.solution);
   });
+
+  const buildBoard =  ()=> {
+    playerSolution.forEach(letter => {
+        let div = document.createElement('div');
+        div.classList.add("letter2");
+        div.innerText = "_";
+        div.myLetter = letter;
+        output2.appendChild(div);
+    });
+  }
 });
 
 
