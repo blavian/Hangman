@@ -1,5 +1,5 @@
 window.addEventListener("DOMContentLoaded", (event) => {
-  const myWords = ['john', 'Javascript']
+  const myWords = ["john", "Javascript"];
   let player = {};
   const message = document.querySelector(".message");
   const output1 = document.querySelector(".output1");
@@ -23,12 +23,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
       div.myLetter = letter;
       output2.appendChild(div);
     });
+    for(let i = 0; i < 26; i++){
+      let temp =String.fromCharCode(65 + i);
+      let div = document.createElement('div');
+      div.classList.add('letter');
+      div.myLetter = temp;
+      div.innerHTML = temp;
+      output1.appendChild(div);
+    }
   }
-        
 });
-
-
-
-        
-
-
