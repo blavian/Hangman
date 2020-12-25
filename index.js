@@ -6,6 +6,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   const output2 = document.querySelector(".output2");
   const btn = document.querySelector("button");
   btn.addEventListener("click", function () {
+    btn.style.display = 'none'
     myWords.sort(function () {
       return 0.5 - Math.random();
     });
@@ -28,6 +29,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
       let div = document.createElement('div');
       div.classList.add('letter');
       div.myLetter = temp;
+      let handler = function(e){
+        div.removeEventListener('click', handler)
+        div.classList.add('done')
+      }
+      div.addEventListener('click', handler);
       div.innerHTML = temp;
       output1.appendChild(div);
     }
