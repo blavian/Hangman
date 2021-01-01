@@ -5,18 +5,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
   const output1 = document.querySelector(".output1");
   const output2 = document.querySelector(".output2");
   const btn = document.querySelector("button");
-  btn.addEventListener("click", function () {
+  btn.addEventListener("click", ()=>{
     output1.innerHTML = ''
     output2.innerHTML = ''
     if(myWords.length > 0){
     btn.style.display = 'none'
-    myWords.sort(function () {
+    myWords.sort( ()=> {
       return 0.5 - Math.random();
     });
     let theWord = myWords.shift();
     player.solution = theWord.split("");
     buildBoard();
-    console.log(player.solution)
+    
   } else{
     message.style.color = 'black'
     message.innerHTML= ('no more words')
@@ -24,7 +24,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   });
 
   function buildBoard() {
-    player.solution.forEach(function (letter) {
+    player.solution.forEach((letter)=>{
       let div = document.createElement("div");
       div.classList.add("letter2");
       div.innerText = "_";
@@ -37,20 +37,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
       let div = document.createElement('div');
       div.classList.add('letter');
       div.myLetter = temp;
-      let handler = function(e){
+      let handler = (e)=> {
         div.removeEventListener('click', handler)
         div.classList.add('done')
         let counter = 0
         let guess = 0
         let mes
 
-        solutionLetter.forEach(function(letter){
+        solutionLetter.forEach((letter)=> {
           if(letter.innerHTML !="_"){
             counter++
           }
           if(letter.myLetter.toUpperCase()=== temp){
             letter.innerHTML = temp
-          
             guess++
           }
         })
@@ -64,7 +63,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         } 
         //check how many letters are left
         let letterLeft = solutionLetter.length-(guess+ counter)
-        message.innerHTML = mes + "<br>" + letterLeft
+        message.innerHTML = mes + "<br>" + letterLeft + " letters left"
         if(letterLeft < 1) btn.style.display = "block"
       
       }
