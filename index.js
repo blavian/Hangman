@@ -34,6 +34,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         div.removeEventListener('click', handler)
         div.classList.add('done')
         let counter = 0
+        let guess = 0
 
         solutionLetter.forEach(function(letter){
           if(letter.innerHTML !="_"){
@@ -41,10 +42,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
           }
           if(letter.myLetter.toUpperCase()=== temp){
             letter.innerHTML = temp
+          
+            guess++
           }
         })
-
-
+        if(guess >0) console.log(`you found ${guess} letters`)
+      
       }
       div.addEventListener('click', handler);
       div.innerHTML = temp;
