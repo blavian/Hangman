@@ -1,5 +1,5 @@
 window.addEventListener("DOMContentLoaded", (event) => {
-  const myWords = ["john", "Javascript"];
+  const myWords = ["John", "Javascript"];
   let player = {};
   const message = document.querySelector(".message");
   const output1 = document.querySelector(".output1");
@@ -24,6 +24,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       div.myLetter = letter;
       output2.appendChild(div);
     });
+    let solutionLetter = document.querySelectorAll(".letter2")
     for(let i = 0; i < 26; i++){
       let temp =String.fromCharCode(65 + i);
       let div = document.createElement('div');
@@ -32,6 +33,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
       let handler = function(e){
         div.removeEventListener('click', handler)
         div.classList.add('done')
+        let counter = 0
+
+        solutionLetter.forEach(function(letter){
+          if(letter.innerHTML !="_"){
+            counter++
+          }
+          if(letter.myLetter.toUpperCase()=== temp){
+            letter.innerHTML = temp
+          }
+        })
+
+
       }
       div.addEventListener('click', handler);
       div.innerHTML = temp;
