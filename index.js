@@ -6,6 +6,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
   const output2 = document.querySelector(".output2");
   const btn = document.querySelector("button");
   btn.addEventListener("click", function () {
+    output1.innerHTML = ''
+    output2.innerHTML = ''
+    if(myWords.length > 0){
     btn.style.display = 'none'
     myWords.sort(function () {
       return 0.5 - Math.random();
@@ -13,7 +16,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
     let theWord = myWords.shift();
     player.solution = theWord.split("");
     buildBoard();
-    console.log(player.solution);
+    console.log(player.solution)
+  } else{
+    console.log('no more words')
+  }
   });
 
   function buildBoard() {
@@ -47,6 +53,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
           }
         })
         if(guess >0) console.log(`you found ${guess} letters`)
+        //check how many letters are left
+        let letterLeft = solutionLetter.length-(guess+ counter)
+        console.log(letterLeft)
+        if(letterLeft < 1) btn.style.display = "block"
       
       }
       div.addEventListener('click', handler);
