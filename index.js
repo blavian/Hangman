@@ -18,7 +18,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
     buildBoard();
     console.log(player.solution)
   } else{
-    console.log('no more words')
+    message.style.color = 'black'
+    message.innerHTML= ('no more words')
   }
   });
 
@@ -41,6 +42,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         div.classList.add('done')
         let counter = 0
         let guess = 0
+        let mes
 
         solutionLetter.forEach(function(letter){
           if(letter.innerHTML !="_"){
@@ -52,10 +54,17 @@ window.addEventListener("DOMContentLoaded", (event) => {
             guess++
           }
         })
-        if(guess >0) console.log(`you found ${guess} letters`)
+        if(guess >0){
+          let multiple = guess > 1 ? "times" :"time" 
+          mes = `You found ${temp} letter ${guess} " " ${multiple} `
+          message.style.color = 'green'
+        } else{
+          message.style.color = 'red'
+          mes="Not found"
+        } 
         //check how many letters are left
         let letterLeft = solutionLetter.length-(guess+ counter)
-        console.log(letterLeft)
+        message.innerHTML = mes + "<br>" + letterLeft
         if(letterLeft < 1) btn.style.display = "block"
       
       }
