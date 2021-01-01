@@ -55,7 +55,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         })
         if(guess >0){
           let multiple = guess > 1 ? "times" :"time" 
-          mes = `You found ${temp} letter ${guess} " " ${multiple} `
+          mes = `You found ${temp} letter ${guess} ${multiple} `
           message.style.color = 'green'
         } else{
           message.style.color = 'red'
